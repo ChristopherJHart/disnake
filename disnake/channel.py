@@ -315,7 +315,6 @@ class TextChannel(disnake.abc.Messageable, disnake.abc.GuildChannel, Hashable):
     async def edit(
         self,
         *,
-        reason: Optional[str] = ...,
         name: str = ...,
         topic: Optional[str] = ...,
         position: int = ...,
@@ -326,6 +325,8 @@ class TextChannel(disnake.abc.Messageable, disnake.abc.GuildChannel, Hashable):
         default_auto_archive_duration: AnyThreadArchiveDuration = ...,
         type: ChannelType = ...,
         overwrites: Mapping[Union[Role, Member, Snowflake], PermissionOverwrite] = ...,
+        flags: ChannelFlags = ...,
+        reason: Optional[str] = ...,
     ) -> Optional[TextChannel]:
         ...
 
@@ -382,6 +383,11 @@ class TextChannel(disnake.abc.Messageable, disnake.abc.GuildChannel, Hashable):
         default_auto_archive_duration: Union[:class:`int`, :class:`ThreadArchiveDuration`]
             The new default auto archive duration in minutes for threads created in this channel.
             Must be one of ``60``, ``1440``, ``4320``, or ``10080``.
+        flags: :class:`.ChannelFlags`
+            The new channel flags for this channel.
+
+            .. versionadded:: 2.6
+
         reason: Optional[:class:`str`]
             The reason for editing this channel. Shows up on the audit log.
 
@@ -1225,6 +1231,7 @@ class VoiceChannel(disnake.abc.Messageable, VocalGuildChannel):
         video_quality_mode: VideoQualityMode = ...,
         nsfw: bool = ...,
         slowmode_delay: int = ...,
+        flags: ChannelFlags = ...,
         reason: Optional[str] = ...,
     ) -> Optional[VoiceChannel]:
         ...
@@ -1292,6 +1299,11 @@ class VoiceChannel(disnake.abc.Messageable, VocalGuildChannel):
             A value of ``0`` disables slowmode. The maximum value possible is ``21600``.
 
             .. versionadded:: 2.3
+
+        flags: :class:`.ChannelFlags`
+            The new channel flags for this channel.
+
+            .. versionadded:: 2.6
 
         Raises
         ------
@@ -1811,6 +1823,7 @@ class StageChannel(VocalGuildChannel):
         overwrites: Mapping[Union[Role, Member], PermissionOverwrite] = ...,
         rtc_region: Optional[Union[str, VoiceRegion]] = ...,
         video_quality_mode: VideoQualityMode = ...,
+        flags: ChannelFlags = ...,
         reason: Optional[str] = ...,
     ) -> Optional[StageChannel]:
         ...
@@ -1858,6 +1871,11 @@ class StageChannel(VocalGuildChannel):
             The camera video quality for the stage channel's participants.
 
             .. versionadded:: 2.0
+
+        flags: :class:`.ChannelFlags`
+            The new channel flags for this channel.
+
+            .. versionadded:: 2.6
 
         reason: Optional[:class:`str`]
             The reason for editing this channel. Shows up on the audit log.
@@ -1990,6 +2008,7 @@ class CategoryChannel(disnake.abc.GuildChannel, Hashable):
         position: int = ...,
         nsfw: bool = ...,
         overwrites: Mapping[Union[Role, Member], PermissionOverwrite] = ...,
+        flags: ChannelFlags = ...,
         reason: Optional[str] = ...,
     ) -> Optional[CategoryChannel]:
         ...
@@ -2026,6 +2045,11 @@ class CategoryChannel(disnake.abc.GuildChannel, Hashable):
         overwrites: :class:`Mapping`
             A :class:`Mapping` of target (either a role or a member) to
             :class:`PermissionOverwrite` to apply to the category.
+        flags: :class:`.ChannelFlags`
+            The new channel flags for this channel.
+
+            .. versionadded:: 2.6
+
         reason: Optional[:class:`str`]
             The reason for editing this category. Shows up on the audit log.
 
@@ -2441,6 +2465,7 @@ class ForumChannel(disnake.abc.GuildChannel, Hashable):
         slowmode_delay: Optional[int] = ...,
         default_auto_archive_duration: AnyThreadArchiveDuration = ...,
         overwrites: Mapping[Union[Role, Member, Snowflake], PermissionOverwrite] = ...,
+        flags: ChannelFlags = ...,
         reason: Optional[str] = ...,
     ) -> Optional[ForumChannel]:
         ...
@@ -2485,6 +2510,11 @@ class ForumChannel(disnake.abc.GuildChannel, Hashable):
         default_auto_archive_duration: Union[:class:`int`, :class:`ThreadArchiveDuration`]
             The new default auto archive duration in minutes for threads created in this channel.
             Must be one of ``60``, ``1440``, ``4320``, or ``10080``.
+        flags: :class:`.ChannelFlags`
+            The new channel flags for this channel.
+
+            .. versionadded:: 2.6
+
         reason: Optional[:class:`str`]
             The reason for editing this channel. Shows up on the audit log.
 
